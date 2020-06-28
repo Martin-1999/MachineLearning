@@ -20,7 +20,7 @@ def img2vector(filePath):
     return vector
 
 
-# 将文本变为数字列表
+# 将 32*32 的文本转化为 1*1024 的矩阵
 def text2vector(filePath):
     vector = np.zeros((1, 1024))
     f = open(filePath)
@@ -46,14 +46,14 @@ def createDataSet(file):
     return trainingMat, labels
 
 
-# kNN算法
 def main():
-    k = 5
-    input = img2vector('4.jpg')  # 待分类数据
-    trainingMat, labels = createDataSet('trainingDigits')
+    k = 10
+    for i in range(10):
+        input = img2vector('testDigits/%s.png' % i)  # 待分类数据
+        trainingMat, labels = createDataSet('trainingDigits')
 
-    reslt = kNN.classify(input, trainingMat, labels, k)
-    print('The number in this image is %d.' % reslt)
+        reslt = kNN.classify(input, trainingMat, labels, k)  # 调用kNN算法
+        print('The number in this image is %d.' % reslt)
 
 
 if __name__ == '__main__':
