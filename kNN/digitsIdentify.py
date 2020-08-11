@@ -47,7 +47,7 @@ def createDataSet(file):
 
 
 def main():
-    k = 10
+    k = 1
     for i in range(10):
         input = img2vector('testDigits/%s.png' % i)  # 待分类数据
         trainingMat, labels = createDataSet('trainingDigits')
